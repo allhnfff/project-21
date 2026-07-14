@@ -6,14 +6,14 @@
   <title>H&T Store — Premium Digital Products</title>
 
   <!-- Favicon (PAKAI LOGO STORE) -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 <body>
@@ -41,7 +41,9 @@
       <div class="nav">
         <a class="brand" href="#">
           <span class="mark">
-            <img src="assets/logo.png" alt="H&T Store">
+           <img
+            src="assets/img/logo.png"
+            alt="H&T Store"
                  onerror="this.remove(); this.parentElement.innerHTML='<i class=&quot;fa-solid fa-store&quot;></i>'; this.parentElement.querySelector('i').style.display='block';">
           </span>
           <span>
@@ -148,9 +150,23 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <h2 class="section-title">Katalog Produk</h2>
-          <p class="section-sub">Cari, filter kategori, ketik nama produk yang kalian cari.</p>
-        </div>
+
+    <h2 class="section-title">Katalog Produk</h2>
+
+    <p class="section-sub">
+        Cari, filter kategori, ketik nama produk yang kalian cari.
+    </p>
+
+    <button
+        id="btnTambah"
+        class="btn-primary"
+        style="margin-top:15px;"
+    >
+        <i class="fa-solid fa-plus"></i>
+        Tambah Produk
+    </button>
+
+</div>
 
         <div class="controls">
           <div class="field">
@@ -350,335 +366,76 @@
     </div>
   </div>
 
-  <script>
-    // =====================
-    // NOMOR WA
-    // =====================
-    const WA_ADMIN = "6285841218112";      // WA Admin (kontak)
-    const WA_ORDER_ADMIN = "6283168725825"; // WA Admin untuk order tombol produk (yang kamu pakai sebelumnya)
-    const WA_BOT = "6287897294851";        // WA Bot Auto Order
+ <script>
+const WA_BOT = "6287897294851";
+const WA_ORDER_ADMIN = "6283168725825";
+</script>
 
-    // =====================
-    // DATA (punya kamu)
-    // =====================
-    const products = [
-      {title: 'Canva Pro', desc: 'Desain grafis profesional', logo: 'https://freepnglogo.com/images/all_img/1691829400logo-canva-png.png', prices: [['1 Bulan', '6.000'], ['3 Bulan', '13.000'], ['1 Tahun', '17.000'], ['Lifetime', '20.000']]},
-      {title: 'Jasa Design/Joki', desc: 'Jasa Yang Mempermudah Kalian Jika Tugas Menumpuk', logo: 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/199815619/original/f3246834c4767a44a7046affac52ca7e4a60578e/design-unique-brand-build-identity-logo.jpg', prices: [['PPT Per Slide', '3.000'],['1 Poster', '30.000'], ['1 Banner', '30.000'], ['1 Logo', '30.000'], ['Web Sederhana', '50.000']]},
-      {title: 'Netflix Premium', desc: 'Streaming film dan series 4K', logo: 'https://images.ctfassets.net/wt70guc1rpin/4J5l85tSYUWxfT0zj90Wai/06c55d490990e65f62d0e8384526e09c/letterform_logo.jpeg', prices: [['Semipriv', '35.000/bln'], ['1p1u', '30.000/bln'], ['1p2u', '20.000/bln']]},
-      {title: 'CapCut Premium', desc: 'Edit video profesional', logo: 'https://vectorseek.com/wp-content/uploads/2023/07/png-capcut-logo.png', prices: [['1 Bulan Private', '16.000'], ['1 Bulan 2u', '10.000'], ['7 Hari Private', '6.000']]},
-      {title: 'ChatGPT Premium', desc: 'AI dengan model terbaru', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg', prices: [['Business 7 hari', '15.000'], ['Business 1 Bulan', '27.000'], ['BUssines 3 Hari', '7.000']]},
-      {title: 'Gemini Pro + 2 Drive TB', desc: 'AI dengan model VEO terbaru', logo: 'https://rocket.domains/wp-content/uploads/2024/03/Gemini-AI-Logo.png', prices: [['Gemini Pro 1 thn', '20.000'], ['Gemini Pro 1 Bulan', '12.000']]},
-      {title: 'YouTube Premium', desc: 'Tanpa iklan & offline', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg', prices: [['Indplan', '9.000/bln'], ['Family Slot', '5.000/bln']]},
-      {title: 'Dramabox', desc: 'Drama favorit tanpa batas', logo: 'https://play-lh.googleusercontent.com/dYAF42EhNGgGhC7nLHNSZkWs11W5Dv0mRWZBv6IgLDTh3l8eolsjeAVGg-HVHt9YWyA', prices: [['1 Bulan Sharing', '15.000']]},
-      {title: 'Alight Motion', desc: 'Edit video animasi profesional', logo: 'https://freepnglogo.com/images/all_img/1691819804alight-motion-logo-png.png', prices: [['1 Tahun Sharing', '4.000'], ['1 Tahun Private', '7.000']]},
-      {title: 'Apple Music', desc: 'Streaming musik berkualitas', logo: 'https://freepnglogo.com/images/all_img/apple-music-logo-png-e0aa.png', prices: [['1 Bulan famplan', '10.000'], ['1 bulan head', '16.000']]},
-      {title: 'Spotify Premium', desc: 'Musik tanpa iklan', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg', prices: [['1 Bulan Indplan', '20.000'], ['1 Bulan Family', '22.000']]},
-      {title: 'VIU Premium', desc: 'Drama Asia terlengkap', logo: 'https://is1-ssl.mzstatic.com/image/thumb/Purple124/v4/7d/5b/e9/7d5be933-a76a-cce4-3380-5360f16e444d/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg', prices: [['1 Bulan Private', '8.000'], ['1 Tahun Private', '15.000'], ['Lifetime', '18.000']]},
-      {title: 'WeTV Premium', desc: 'Drama & variety show', logo: 'https://tse3.mm.bing.net/th/id/OIP.E_VVzxIU-Q2P_uBbhPJbEAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3', prices: [['1 Bulan 6u', '10.000'], ['1 Bulan 3u', '18.000'], ['1 Bulan Private', '40.000']]},
-      {title: 'Reelshort VIP', desc: 'Drama Pendek', logo: 'https://cdn.aptoide.com/imgs/7/7/8/778d6297e5e50c6d57fd830979071692_icon.png', prices: [['1 Bulan Sharing', '15.000']]},
-      {title: 'Bstation Premium', desc: 'Streaming Anime', logo: 'https://play-lh.googleusercontent.com/nug7F0n-jWMpAWLaU7Qi1kuTIYjrAtUJmZd5FW4mEyspYR7-zGa-3_fwnYkPgyzHozE3', prices: [['1 Bulan Sharing', '8.000'], ['1 Tahun Sharing', '18.000']]},
-      {title: 'Microsoft 365', desc: 'Editing makalah dengan lebih leluasa', logo: 'https://iconlogovector.com/uploads/images/2023/03/lg-0438cfb397d95751203ce73d7a6dcd3e30.jpg', prices: [['1 Bulan Acc Seller', '10.000'], ['1 Bulan Acc buyer', '15.000']]},
-      {title: 'Zoom Premium', desc: 'Zoom dengan lebih profesional', logo: 'https://wallpapers.com/images/hd/zoom-pictures-xyphlin0b1cgb1fd.jpg', prices: [['14 hari', '8.000'],['1 Bulan Private', '15.000']]},
-      {title: 'iQIYI Premium', desc: 'Konten Asia berkualitas', logo: 'https://play-lh.googleusercontent.com/L40FnQ8nF8zRtUdALz9b23JirsxYA5-0_fkRUlFBMymud09ctBCFrNui4l-ES_V6Uw', prices: [['1 Bulan Standar', '7.000'], ['1 Tahun Standar', '17.000'], ['1 Bulan Premium', '8.000'], ['1 Tahun Premium', '18..000']]},
-      {title: 'Prime Video', desc: 'Amazon Original', logo: 'https://www.altibox.no/wp-content/uploads/2022/08/prime-vidoe.png', prices: [['1 Bulan Sharing 3u', '9.000'], ['1 Bulan Private', '  18.000']]},
-      {title: 'Picsart Premium', desc: 'Edit foto & desain', logo: 'https://vectorseek.com/wp-content/uploads/2023/08/Picsart-Icon-Logo-Vector.svg-.png', prices: [['1 Bulan Sharing', '6.000'], ['1 Bulan Private', '12.000']]},
-      {title: 'Youku Premium', desc: 'Streaming dari China', logo: 'https://play-lh.googleusercontent.com/tCS-GBn1rQC-3gd84ssXFTmBFl_8VAYnj8l4BDrQdsCeDkddcbhLxDlyr5shrMC9r5I=w220', prices: [['1 Bulan', '8.000'], ['3 Bulan', '15.000'], ['1 Tahun', '18.000']]},
-      {title: 'Moviebox Premium', desc: 'Film & series lengkap', logo: 'https://4.bp.blogspot.com/-VwY4NjwtT8c/Ur2z9FxhEcI/AAAAAAAADV4/aOWTN6piF-I/s1600/Movie+Box.png', prices: [['1 Bulan Android', '8.000'], ['1 Bulan iOS', '10.000'], ['1 Tahun Android', '18.000']]},
-      {title: 'Wink Premium', desc: 'Platform hiburan', logo: 'https://tse4.mm.bing.net/th/id/OIP.SsLG2P4ZubuTFF_X-LC0jQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3', prices: [['7 Hari 2u', '8.000'], ['7 Hari Private', '13.000']]},
-      {title: 'Fizzo Premium', desc: 'hiburan', logo: 'https://tse2.mm.bing.net/th/id/OIP.jAyURSHnB5HUPvBmcu14JgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3', prices: [['1 Bulan Sharing', '10.000']]},
-      {title: 'Getcontact Premium', desc: 'Cek Nomer Dan Terhindar Dari Penipuan', logo: 'https://free-png.ru/wp-content/uploads/2021/11/free-png.ru-488.png', prices: [['1 Bulan', '10.000'], ['Cek 1 Nomer', '1000']]},
-      {title: 'Wattpad Premium', desc: 'Baca cerita tanpa iklan', logo: 'https://cdn-icons-png.flaticon.com/512/3992/3992005.png', prices: [['1 Bulan', '8.000'], ['1 Tahun', '16.000']]},
-      {title: 'Vidio Premium', desc: 'TV & sport Indonesia', logo: 'https://cdn.freelogovectors.net/wp-content/uploads/2021/12/vidio-logo-freelogovectors.net_-400x400.png', prices: [['1 Bulan 2u All Device', '24.000'], ['1 Bulan Private All Device', '37.000'], ['1 Bulan 2u Mobile', '18.000'], ['1 Bulan Private Mobile', '25.000'], ['Only TV 1 Tahun', '12.000']]},
-      {title: 'Loklok Premium', desc: 'Drama & film Asia', logo: 'https://loklokapkk.com/wp-content/uploads/2024/12/logo-table-new-1.webp', prices: [['1 Bulan 3u Android', '24.000'], ['1 Bulan 5u TV', '21.000']]},
-      {title: 'HBO Max', desc: 'Series blockbuster', logo: 'https://www.gloryofthesnow.com/wp-content/uploads/2022/05/HBO-Max-Black.png', prices: [['1 Bulan Ultimate Sharing', '20.000'], ['1 Bulan Standar Sharing', '15.000']]},
-      {title: 'Wibuku Premium', desc: 'Streaming Anime', logo: 'https://play-lh.googleusercontent.com/EAVnwk0BS5chgGbygHiIYu2w5OLx54GdXDZQBsdLM4rU_xZ86fPjBmLAljN9wARvmvxA', prices: [['1 Tahun Sharing', '16.000']]},
-      {title: 'Lightroom Premium', desc: 'Edit foto profesional', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg', prices: [['1 Tahun Sharing', '20.000']]},
-      {title: 'Meitu Premium', desc: 'Edit foto dengan AI', logo: 'https://getmodsapk.com/storage/Meitu%20MOD%20APK0.png', prices: [['1 Bulan 3u', '20.000']]},
-      {title: 'Vision Premium', desc: 'Sport & entertainment', logo: 'https://mir-s3-cdn-cf.behance.net/projects/max_808/35b05093008279.Y3JvcCwxNDg2LDExNjIsNDk2LDUxNQ.jpg', prices: [['Timnas & Bein Pay TV 1 Bulan', '20.000'], ['Ultimate Premium', '60.000']]}
-    ];
+<!-- ===================== -->
+<!-- CRUD MODAL -->
+<!-- ===================== -->
 
-    // =====================
-    // HELPERS
-    // =====================
-    const formatRp = (s) => String(s).trim();
-    const normalize = (txt) => (txt || "").toLowerCase().trim();
+<div id="crudModal" class="modal">
 
-    const guessCategory = (title, desc) => {
-      const t = normalize(title + " " + desc);
-      if (/(netflix|youtube|viu|wetv|iqiyi|prime|vidio|hbo|max|movie|drama|loklok|youku|wibuku|bstation|dramabox)/.test(t)) return "streaming";
-      if (/(spotify|apple music)/.test(t)) return "music";
-      if (/(canva|capcut|alight|picsart|lightroom|meitu|design|joki|ppt|logo|banner|poster)/.test(t)) return "editing";
-      if (/(chatgpt|gemini|ai|veo)/.test(t)) return "ai";
-      if (/(microsoft|365|zoom|getcontact)/.test(t)) return "tools";
-      return "other";
-    };
+    <div class="modal-card">
 
-    const minPriceValue = (prices) => {
-      let min = Infinity;
-      for (const [, val] of prices || []) {
-        const clean = String(val).replace(/[^\d]/g, "");
-        if (!clean) continue;
-        const n = Number(clean);
-        if (!Number.isNaN(n)) min = Math.min(min, n);
-      }
-      return min === Infinity ? 0 : min;
-    };
-
-    const enriched = products.map((p, idx) => ({
-      ...p,
-      id: idx + 1,
-      cat: guessCategory(p.title, p.desc),
-      min: minPriceValue(p.prices),
-      featured: /canva|netflix|chatgpt|youtube|capcut|dramabox/i.test(p.title)
-    }));
-
-    // =====================
-    // UI REFERENCES
-    // =====================
-    const grid = document.getElementById("grid");
-    const empty = document.getElementById("empty");
-    const q = document.getElementById("q");
-    const clearQ = document.getElementById("clearQ");
-    const cat = document.getElementById("cat");
-    const sort = document.getElementById("sort");
-    const chips = document.getElementById("chips");
-
-    // Modal
-    const modal = document.getElementById("modal");
-    const mClose = document.getElementById("mClose");
-    const mTitle = document.getElementById("mTitle");
-    const mName = document.getElementById("mName");
-    const mDesc = document.getElementById("mDesc");
-    const mPrices = document.getElementById("mPrices");
-    const mVisual = document.getElementById("mVisual");
-    const mOrderAdmin = document.getElementById("mOrderAdmin");
-    const mOrderBot = document.getElementById("mOrderBot");
-    const mCopy = document.getElementById("mCopy");
-
-    // Topbar copy WA
-    const btnCopyWA = document.getElementById("btnCopyWA");
-
-    // Mobile nav
-    const burger = document.getElementById("burger");
-    const mnav = document.getElementById("mnav");
-
-    burger.addEventListener("click", () => {
-      mnav.classList.toggle("active");
-      burger.innerHTML = mnav.classList.contains("active")
-        ? '<i class="fa-solid fa-xmark"></i>'
-        : '<i class="fa-solid fa-bars"></i>';
-    });
-
-    // Set links (nav buttons)
-    const botLink = `https://wa.me/${WA_BOT}?text=${encodeURIComponent("LIST")}`;
-    const adminNavLink = `https://wa.me/${WA_ORDER_ADMIN}`;
-
-    document.getElementById("btnAdminNav").href = adminNavLink;
-    document.getElementById("btnBotNav").href = botLink;
-    document.getElementById("btnAdminMnav").href = adminNavLink;
-    document.getElementById("btnBotMnav").href = botLink;
-    document.getElementById("btnBotHero").href = botLink;
-
-    // Chips
-    const chipDefs = [
-      { key: "all", label: "Semua", icon: "fa-border-all" },
-      { key: "streaming", label: "Streaming", icon: "fa-film" },
-      { key: "music", label: "Music", icon: "fa-music" },
-      { key: "editing", label: "Editing/Design", icon: "fa-pen-nib" },
-      { key: "ai", label: "AI", icon: "fa-wand-magic-sparkles" },
-      { key: "tools", label: "Tools", icon: "fa-screwdriver-wrench" },
-      { key: "other", label: "Lainnya", icon: "fa-ellipsis" }
-    ];
-
-    function renderChips(active = "all"){
-      chips.innerHTML = chipDefs.map(c => `
-        <button class="chip ${c.key === active ? "active" : ""}" data-chip="${c.key}">
-          <i class="fa-solid ${c.icon}"></i> ${c.label}
-        </button>
-      `).join("");
-      chips.querySelectorAll(".chip").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const k = btn.getAttribute("data-chip");
-          cat.value = k;
-          renderChips(k);
-          apply();
-        });
-      });
-    }
-
-    function cardTemplate(p){
-      const badge = p.featured ? `<span class="tag"><i class="fa-solid fa-fire"></i> Best Seller</span>` : "";
-
-      const orderText = `Halo, saya mau order ${p.title}. Paket yang saya pilih: (tulis paket).`;
-      const waAdmin = `https://wa.me/${WA_ORDER_ADMIN}?text=${encodeURIComponent(orderText)}`;
-
-      // Bot: default "LIST" sesuai alur bot kamu
-      const waBot = `https://wa.me/${WA_BOT}?text=${encodeURIComponent("LIST")}`;
-
-      const rows = (p.prices || []).slice(0, 4).map(pr => `
-        <div class="price-row">
-          <small>${pr[0]}</small>
-          <b>Rp ${formatRp(pr[1])}</b>
+        <div class="modal-head">
+            <h3 id="crudTitle">Tambah Produk</h3>
         </div>
-      `).join("");
 
-      const img = p.logo
-        ? `<img class="logo" src="${p.logo}" alt="${p.title}" loading="lazy" onerror="this.replaceWith((() => { const d=document.createElement('div'); d.className='fallback'; d.innerHTML='<i class=\\'fa-solid fa-box\\'></i>'; return d; })())">`
-        : `<div class="fallback"><i class="fa-solid fa-box"></i></div>`;
+        <div class="modal-body">
 
-      return `
-        <article class="card" data-id="${p.id}">
-          <div class="card-top">
-            ${badge}
-            ${img}
-          </div>
-          <div class="card-body">
-            <h3 class="title">${p.title}</h3>
-            <p class="desc">${p.desc}</p>
+            <input
+                type="text"
+                id="title"
+                placeholder="Nama Produk"
+                style="width:100%;margin-bottom:12px;"
+            >
 
-            <div class="pricebox">
-              ${rows}
-            </div>
+            <input
+                type="text"
+                id="description"
+                placeholder="Deskripsi"
+                style="width:100%;margin-bottom:12px;"
+            >
 
-            <div class="card-actions">
-              <button class="btn" data-detail="${p.id}">
-                <i class="fa-solid fa-circle-info"></i> Detail
-              </button>
+            <input
+                type="text"
+                id="logo"
+                placeholder="URL Logo"
+                style="width:100%;margin-bottom:12px;"
+            >
 
-              <a class="btn whatsapp" href="${waAdmin}" target="_blank" rel="noopener">
-                <i class="fa-brands fa-whatsapp"></i> Admin
-              </a>
+            <textarea
+                id="prices"
+                rows="6"
+                style="width:100%;margin-bottom:18px;"
+                placeholder='Contoh:
+[["1 Bulan","10000"],["1 Tahun","50000"]]'
+            ></textarea>
 
-              <a class="btn bot" href="${waBot}" target="_blank" rel="noopener">
-                <i class="fa-brands fa-whatsapp"></i> Bot
-              </a>
-            </div>
-          </div>
-        </article>
-      `;
-    }
+            <button
+                id="saveProduct"
+                class="btn-primary"
+            >
+                Simpan
+            </button>
 
-    function render(list){
-      grid.innerHTML = list.map(cardTemplate).join("");
-      empty.classList.toggle("active", list.length === 0);
+            <button
+                id="closeModal"
+                class="btn-ghost"
+            >
+                Batal
+            </button>
 
-      grid.querySelectorAll("[data-detail]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const id = Number(btn.getAttribute("data-detail"));
-          openModal(id);
-        });
-      });
-    }
+        </div>
 
-    function openModal(id){
-      const p = enriched.find(x => x.id === id);
-      if(!p) return;
+    </div>
 
-      const orderText = `Halo, saya mau order ${p.title}. Paket yang saya pilih: (tulis paket).`;
-      const waAdmin = `https://wa.me/${WA_ORDER_ADMIN}?text=${encodeURIComponent(orderText)}`;
-      const waBot = `https://wa.me/${WA_BOT}?text=${encodeURIComponent("LIST")}`;
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="assets/js/main.js"></script>
 
-      mTitle.textContent = "Detail Produk";
-      mName.textContent = p.title;
-      mDesc.textContent = p.desc;
 
-      if (p.logo) {
-        mVisual.innerHTML = `<img src="${p.logo}" alt="${p.title}" onerror="this.remove();">`;
-      } else {
-        mVisual.innerHTML = `<div class="fallback"><i class="fa-solid fa-box"></i></div>`;
-      }
-
-      mPrices.innerHTML = `
-        ${(p.prices||[]).map(pr => `
-          <div class="price-row">
-            <small>${pr[0]}</small>
-            <b>Rp ${formatRp(pr[1])}</b>
-          </div>
-        `).join("")}
-      `;
-
-      mOrderAdmin.setAttribute("href", waAdmin);
-      mOrderBot.setAttribute("href", waBot);
-
-      mCopy.onclick = async () => {
-        try{
-          await navigator.clipboard.writeText(orderText);
-          mCopy.innerHTML = '<i class="fa-solid fa-check"></i> Tersalin';
-          setTimeout(() => mCopy.innerHTML = '<i class="fa-solid fa-copy"></i> Salin Text Order', 1400);
-        }catch(e){
-          alert("Gagal menyalin. Copy manual:\n\n" + orderText);
-        }
-      };
-
-      modal.classList.add("active");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeModal(){
-      modal.classList.remove("active");
-      modal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-    mClose.addEventListener("click", closeModal);
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
-    });
-
-    function apply(){
-      const term = normalize(q.value);
-      const catVal = cat.value;
-
-      let list = enriched.filter(p => {
-        const hay = normalize(p.title + " " + p.desc + " " + (p.prices||[]).flat().join(" "));
-        const matchesTerm = term ? hay.includes(term) : true;
-        const matchesCat = (catVal === "all") ? true : p.cat === catVal;
-        return matchesTerm && matchesCat;
-      });
-
-      switch(sort.value){
-        case "az": list.sort((a,b) => a.title.localeCompare(b.title)); break;
-        case "za": list.sort((a,b) => b.title.localeCompare(a.title)); break;
-        case "low": list.sort((a,b) => a.min - b.min); break;
-        case "high": list.sort((a,b) => b.min - a.min); break;
-        default:
-          list.sort((a,b) => (Number(b.featured)-Number(a.featured)) || (a.min - b.min));
-      }
-
-      render(list);
-    }
-
-    q.addEventListener("input", () => apply());
-    cat.addEventListener("change", () => {
-      renderChips(cat.value);
-      apply();
-    });
-    sort.addEventListener("change", apply);
-
-    clearQ.addEventListener("click", () => {
-      q.value = "";
-      q.focus();
-      apply();
-    });
-
-    btnCopyWA?.addEventListener("click", async () => {
-      const text = "+" + WA_ORDER_ADMIN;
-      try{
-        await navigator.clipboard.writeText(text);
-        btnCopyWA.innerHTML = '<i class="fa-solid fa-check"></i> Tersalin';
-        setTimeout(() => btnCopyWA.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Salin Nomor Admin', 1400);
-      }catch(e){
-        alert("Gagal menyalin. Nomor WA Admin: " + text);
-      }
-    });
-
-    // Init
-    renderChips("all");
-    apply();
-  </script>
 </body>
 </html>
