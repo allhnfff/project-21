@@ -4,7 +4,7 @@ services:
   app:
     build: .
 
-    container_name: htstore-app
+    container_name: hntstore-app
 
     restart: always
 
@@ -20,14 +20,14 @@ services:
   postgres:
     image: postgres:16-alpine
 
-    container_name: htstore-db
+    container_name: hntstore-db
 
     restart: always
 
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: htstore
+      POSTGRES_DB: hntstore
 
     ports:
       - "5432:5432"

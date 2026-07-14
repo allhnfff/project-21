@@ -143,13 +143,13 @@ DELETE
 Build Docker Image
 
 ```bash
-docker build -t htstore .
+docker build -t hntstore .
 ```
 
 Menjalankan Container
 
 ```bash
-docker run -d -p 3000:3000 htstore
+docker run -d -p 3000:3000 hntstore
 ```
 
 ---
