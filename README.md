@@ -170,6 +170,39 @@ docker compose down
 
 ---
 
+# Architecture Diagram
+
+```
+               GitHub
+                  │
+                  ▼
+          GitHub Actions
+                  │
+                  ▼
+        DigitalOcean VPS
+                  │
+          Docker Compose
+          ┌──────────────┐
+          │              │
+          ▼              ▼
+      Express App    PostgreSQL
+          │
+          ▼
+        Nginx
+          │
+          ▼
+ HTTPS (Let's Encrypt)
+          │
+          ▼
+      https://alhan.my.id
+
+      Uptime Kuma
+           │
+           ▼
+      HTTP Monitoring
+
+```
+
 # Deployment
 
 Deployment menggunakan Docker dan Docker Compose.
@@ -184,7 +217,55 @@ Tahapan deployment:
 
 Deployment ke VPS akan dilakukan setelah server tersedia.
 
+# Restart Procedure
+
+Masuk ke VPS
+
+```bash
+ssh root@143.198.202.235
+```
+
+Masuk ke project
+
+```bash
+cd ~/project-21
+```
+
+Restart aplikasi
+
+```bash
+docker compose restart
+```
+
+Melihat status container
+
+```bash
+docker compose ps
+```
+
 ---
+
+# Rollback Procedure
+
+Apabila deployment gagal.
+
+Lihat commit sebelumnya
+
+```bash
+git log
+```
+
+Checkout commit
+
+```bash
+git checkout <commit-id>
+```
+
+Deploy ulang
+
+```bash
+docker compose up -d --build
+```
 
 # Monitoring
 
@@ -227,7 +308,67 @@ Langkah recovery:
 4. Verifikasi database
 5. Verifikasi endpoint API
 
+# Restore Backup
+
+Masuk folder backup
+
+```bash
+cd ~/backup
+```
+
+Lihat file backup
+
+```bash
+ls
+```
+
+Restore database PostgreSQL menggunakan file SQL yang tersedia.
+
+Verifikasi database berjalan dengan baik menggunakan:
+
+```bash
+docker logs hntstore-db
+```
+
 ---
+
+# Operational Notes
+
+## Melihat Log Aplikasi
+
+```bash
+docker logs hntstore-app
+```
+
+## Melihat Log Database
+
+```bash
+docker logs hntstore-db
+```
+
+## Monitoring
+
+```
+http://143.198.202.235:3001
+```
+
+## Website Production
+
+```
+https://alhan.my.id
+```
+
+## Backup Script
+
+```
+/root/backup/backup.sh
+```
+
+## Cron Job
+
+```bash
+crontab -l
+```
 
 # Author
 
